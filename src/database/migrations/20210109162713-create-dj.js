@@ -2,6 +2,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Djs', {
       id: {
+        type: Sequelize.UUID
         allowNull: false,
         primaryKey: true,
         default: Sequelize.fn("uuid_generate_v4"),

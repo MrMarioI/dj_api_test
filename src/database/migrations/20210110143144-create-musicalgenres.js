@@ -3,13 +3,10 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Musicalgenres', {
       id: {
+        type: Sequelize.UUID,
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.fn("uuid_generate_v4")
-      },
-      id: {
-        type: Sequelize.UUID
       },
       name: {
         type: Sequelize.STRING(50)
