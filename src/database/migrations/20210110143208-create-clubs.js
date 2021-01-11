@@ -9,7 +9,9 @@ module.exports = {
         type: Sequelize.fn("uuid_generate_v4")
       },
       name: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(50),
+        allowNull: false,
+        unique: true
       },
       created_at: {
         allowNull: false,
