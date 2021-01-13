@@ -1,67 +1,66 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Djs', {
+    await queryInterface.createTable("Djs", {
       id: {
-        type: Sequelize.UUID,
         allowNull: false,
         primaryKey: true,
+        type: Sequelize.UUID,
         default: Sequelize.fn("uuid_generate_v4"),
       },
       url_name: {
         type: Sequelize.STRING(50),
         allowNull: false,
-        unique: true
+        unique: true,
       },
       name: {
         type: Sequelize.STRING(50),
         allowNull: false,
-        unique: true
+        unique: true,
       },
       biography: {
         type: Sequelize.STRING(2000),
-        allowNull: false
+        allowNull: false,
       },
       soundcloud: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
       },
       facebook: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
       },
       instagram: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
       },
       spotify: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
       },
       beatport: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
       },
       mixcloud: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
       },
       youtube: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
       },
       club_id: {
+        allowNull: false,
         type: Sequelize.UUID,
         references: {
           model: "Clubs",
-          key: "id"
-        }
+          key: "id",
+        },
       },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
       updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      }
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Djs');
-  }
+    await queryInterface.dropTable("Djs");
+  },
 };

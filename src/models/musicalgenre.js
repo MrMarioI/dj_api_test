@@ -1,13 +1,19 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Club extends Model {
+  class Musicalgenre extends Model {
     static associate(models) {
-      models.Club.hasMany(models.Dj, {
-        foreignKey: "club_id",
+      Musicalgenre.belongsToMany(models.Dj, {
+        through: "DjMusicalGenres",
+        foreignKey: {
+          allowNull: false,
+          name: "musicalgenre_id",
+        },
+        onDelete: "cascade",
+        hooks: true,
       });
     }
   }
-  Club.init(
+  Musicalgenre.init(
     {
       id: {
         type: DataTypes.UUID,
@@ -31,10 +37,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Club",
+      modelName: "Musicalgenre",
       createdAt: "created_at",
       updatedAt: "updated_at",
     }
   );
-  return Club;
+  return Musicalgenre;
 };
